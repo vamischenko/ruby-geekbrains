@@ -3,7 +3,7 @@ names = %w[Иванов Петров Сидоров Алексеева Каза�
 puts names.sort.to_s
 
 puts "\nTask2"
-random_items = (0..9).map { Random.rand(0..99) }
+random_items = (0..9).map {Random.rand(0..99)}
 puts random_items.to_s
 puts [random_items.min, random_items.max].to_s
 
@@ -30,11 +30,11 @@ end
 puts users
 
 puts "\nTask4"
-users = (0..4).map { |num| User.new "User#{num}", Random.rand(1..5) }
+users = (0..4).map {|num| User.new "User#{num}", Random.rand(1..5)}
 puts 'All users'
 puts users
 puts "\nUser with max grade"
-puts(users.inject { |acc, user| user.grade > acc.grade ? user : acc })
+puts(users.inject {|acc, user| user.grade > acc.grade ? user : acc})
 
 class Point
   attr_accessor :x
@@ -49,7 +49,7 @@ class Point
     x_diff = point.x - @x
     y_diff = point.y - @y
 
-    Math.sqrt(x_diff**2 + y_diff**2).round(2)
+    Math.sqrt(x_diff ** 2 + y_diff ** 2).round(2)
   end
 
   def to_s
@@ -58,7 +58,7 @@ class Point
 end
 
 puts "\nTask5"
-points = (0..1).map { Point.new Random.rand(100.0), Random.rand(100.0) }
+points = (0..1).map {Point.new Random.rand(100.0), Random.rand(100.0)}
 puts 'Points'
 puts points
 puts "Distance between it: #{points[0].distance_to(points[1])}"

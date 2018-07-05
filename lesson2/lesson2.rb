@@ -13,7 +13,8 @@ def colors(colNumber)
     puts "white-blue";
   elsif colNumber == 7
     puts "purple";
-  else puts nil;
+  else
+    puts nil;
   end
 end
 

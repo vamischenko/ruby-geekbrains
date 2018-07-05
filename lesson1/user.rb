@@ -5,9 +5,11 @@ class User
     @lastName = last
     @profession = prof
   end
+
   def fio
     return @firstName, @secondName, @lastName
   end
+
   def get_prof
     return @profession
   end

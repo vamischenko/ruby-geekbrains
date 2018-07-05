@@ -1,5 +1,5 @@
 def colors(number)
-  color_list =  %w[красный оранжевый желтый зеленый голубой синий фиолетовый]
+  color_list = %w[красный оранжевый желтый зеленый голубой синий фиолетовый]
 
   return nil if number < 1 || number > color_list.length
 
