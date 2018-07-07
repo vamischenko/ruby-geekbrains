@@ -1,8 +1,8 @@
 # task 4
-p %i(first second third)
+p %i[first second third]
 
-arr = %i(first second third)
-h = Hash.new
+arr = %i[first second third]
+h = {}
 puts arr.length
 puts arr[0]
 for item in arr

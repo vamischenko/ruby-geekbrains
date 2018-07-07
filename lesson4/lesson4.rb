@@ -1,12 +1,10 @@
-# encoding: utf-8
+
 # task №1
-massiv = ['cat', 'dog', 'tiger']
+massiv = %w[cat dog tiger]
 for word in massiv
-  if word.scan('t')
-    print word + ' '
-  end
+  print word + ' ' if word.scan('t')
 end
-puts ""
+puts ''
 # task №2
 puts massiv
 for word in massiv
@@ -16,7 +14,6 @@ end
 for word in massiv
   print word + ' '
 end
-
 
 # task №3
 class User
@@ -28,13 +25,12 @@ class User
   end
 end
 
-
-users = Array.new(3) do |index|
+users = Array.new(3) do |_index|
   print 'Введите имя '
   s = gets.encode('UTF-8').chomp
   print 'Введите оценку '
 
-  while gets.to_i >= 1 and gets.to_i <= 5
+  while (gets.to_i >= 1) && (gets.to_i <= 5)
     v = gets.to_i
   end
   User.new(s, v)
