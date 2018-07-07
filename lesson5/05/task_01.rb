@@ -3,18 +3,18 @@
 # объекта методом puts должна выводиться фраза 'Hello world!', где подстрока world задается
 # параметром конструктора.
 class Hello
-    
-    def initialize(name='world')
-        @name = name
-    end
-    
-    def say
-        puts to_s
-    end
-    
-    def to_s
-        "Hello #{@name}!"
-    end
+
+  def initialize(name = 'world')
+    @name = name
+  end
+
+  def say
+    puts to_s
+  end
+
+  def to_s
+    "Hello #{@name}!"
+  end
 end
 
 hello = Hello.new()

@@ -20,11 +20,11 @@ gets
 # * поддерживать метод, который возвращает имя, фамилию и отчество в виде массива.
 
 uselesuser = User.new('ask')
-puts uselesuser.full_name               # возвращает строку с именем пользователя
-puts uselesuser.fioarray                # возвращает имя, фамилию и отчество в виде массива.
-puts uselesuser.name('name')            # читаем имя 
-uselesuser.name('sname','Петров')       # меняем фамилию
-puts uselesuser.full_name               # возвращает строку с именем пользователя
+puts uselesuser.full_name # возвращает строку с именем пользователя
+puts uselesuser.fioarray # возвращает имя, фамилию и отчество в виде массива.
+puts uselesuser.name('name') # читаем имя
+uselesuser.name('sname', 'Петров') # меняем фамилию
+puts uselesuser.full_name # возвращает строку с именем пользователя
 puts uselesuser.to_s + ' - Супергерой!' # сложили со строкой
 puts
 puts 'press enter'
@@ -33,7 +33,7 @@ gets
 # 3. Создайте класс Group, конструктор которого может принимать произвольное количество объектов класса User
 # (из предыдущего задания). Реализуйте вывод списка пользователей с использованием класса Group.
 
-uselesuserarray =[]
+uselesuserarray = []
 ['Иванов Иван Иванович', 'Петров Петр Петрович', 'Сидоров Сидр Сидрович'].each {|usr| uselesuserarray << User.new(usr)}
 uselesusergroup = Group.new('uselesusergroup', uselesuserarray)
 uselesusergroup.list_user('0100')
@@ -44,11 +44,11 @@ gets
 # Реализуйте в классе подсчет каждого созданного объекта-игрушки (медвежонок, мяч, кубики). Используйте для учета классовые переменные.
 
 toy = Mill.new('uselesmill')
-toy.makeproduct('ball',5)
+toy.makeproduct('ball', 5)
 puts toy.millstat
-toy.makeproduct('bear',3)
+toy.makeproduct('bear', 3)
 puts toy.millstat
-toy.makeproduct('cube',12)
+toy.makeproduct('cube', 12)
 puts toy.millstat
 
 puts toy.millstat('ball')
@@ -65,29 +65,29 @@ gets
 
 class Bl_value
 
-    def method_missing(method, value)
-        mname = method.to_s.scan(/[^=]/).join     
-        self.class.send(:define_method,  "#{mname}".to_sym) { instance_variable_set("@#{mname}", value ) }
-        self.class.send(:define_method,  "#{mname}".to_sym) { instance_variable_get("@#{mname}"        ) }
-        self.class.send(:define_method, "#{mname}=".to_sym) { |new_value| instance_variable_set("@#{mname}".to_sym, new_value) }
-    end   
-end
-    
-class Settings < Bl_value
-    
-    def method_missing(method, *args)
-        raise "Undefined method #{method} for class Settings"
-    end
-    
-    def initialize(&block)
-        userproc = block
-        objval = Bl_value.new
-        yield(objval)
-        userproc.call(objval)
-    end
+  def method_missing(method, value)
+    mname = method.to_s.scan(/[^=]/).join
+    self.class.send(:define_method, "#{mname}".to_sym) {instance_variable_set("@#{mname}", value)}
+    self.class.send(:define_method, "#{mname}".to_sym) {instance_variable_get("@#{mname}")}
+    self.class.send(:define_method, "#{mname}=".to_sym) {|new_value| instance_variable_set("@#{mname}".to_sym, new_value)}
+  end
 end
 
-setting = Settings.new { |s| s.hello = 'world' }
+class Settings < Bl_value
+
+  def method_missing(method, *args)
+    raise "Undefined method #{method} for class Settings"
+  end
+
+  def initialize(&block)
+    userproc = block
+    objval = Bl_value.new
+    yield(objval)
+    userproc.call(objval)
+  end
+end
+
+setting = Settings.new {|s| s.hello = 'world'}
 setting.hello = 'world'
 puts setting.hello
 setting.hello = 'useless'

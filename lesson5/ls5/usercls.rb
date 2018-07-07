@@ -1,6 +1,7 @@
 class User
   attr_reader :user_id
   @user_count = 0
+
   def self.inccnt
     @user_count += 1
   end
@@ -18,7 +19,7 @@ class User
     end
     user_rate = askrate if user_rate == 'ask'
     usr_name = usr_name.to_s.split
-    @usr_fio = { name: usr_name[0], sname: usr_name[1], mname: usr_name[2] }
+    @usr_fio = {name: usr_name[0], sname: usr_name[1], mname: usr_name[2]}
     rate(user_rate) unless user_rate.nil?
     occupation(usr_occupation) unless usr_occupation.nil?
     @user_id = User.inccnt
@@ -49,22 +50,24 @@ class User
   def fio
     @usr_fio.values.join(' ')
   end
+
   alias_method :full_name, :fio
   alias_method :to_s, :fio
-  
+
   ##
   # return users name surname middle name as array or hash, default as array  ( example > Иванов Иван Иванович )
   #
   def fioarray(type = nil)
     type.nil? ? @usr_fio.values : @usr_fio
   end
-  
+
   ##
   # set and return user name or sname or mname  ( example for set> name('sname', 'Petrov' ) example for get> name('mname') )
   #
   def name(type, newval = nil)
     @usr_fio[type.to_sym] = newval.nil? ? @usr_fio[type.to_sym] : newval
   end
+
   ##
   # set and return user rate: example > set_rate(4)
   # if value user_rate is zero, user_rate sets random between from 1 to 5
@@ -107,7 +110,7 @@ class Usergroup
   # delete user from Usergroup with user_id
   #
   def delete_user(deluser_id)
-    @group_users.delete_if { |item| item.user_id == deluser_id }
+    @group_users.delete_if {|item| item.user_id == deluser_id}
   end
 
   ##
@@ -128,14 +131,14 @@ class Usergroup
   # retur list of all users
   #
   def list_user(param = '1110')
-    @group_users.each { |item| puts item.info(param) }
+    @group_users.each {|item| puts item.info(param)}
   end
 
   ##
   # retur user with user_id
   #
   def user_by_id(user_id)
-    @group_users.find { |item| item.user_id == user_id }
+    @group_users.find {|item| item.user_id == user_id}
   end
 end
 
