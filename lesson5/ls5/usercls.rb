@@ -19,7 +19,7 @@ class User
     end
     user_rate = askrate if user_rate == 'ask'
     usr_name = usr_name.to_s.split
-    @usr_fio = {name: usr_name[0], sname: usr_name[1], mname: usr_name[2]}
+    @usr_fio = { name: usr_name[0], sname: usr_name[1], mname: usr_name[2] }
     rate(user_rate) unless user_rate.nil?
     occupation(usr_occupation) unless usr_occupation.nil?
     @user_id = User.inccnt
@@ -51,8 +51,8 @@ class User
     @usr_fio.values.join(' ')
   end
 
-  alias_method :full_name, :fio
-  alias_method :to_s, :fio
+  alias full_name fio
+  alias to_s fio
 
   ##
   # return users name surname middle name as array or hash, default as array  ( example > Иванов Иван Иванович )
@@ -110,7 +110,7 @@ class Usergroup
   # delete user from Usergroup with user_id
   #
   def delete_user(deluser_id)
-    @group_users.delete_if {|item| item.user_id == deluser_id}
+    @group_users.delete_if { |item| item.user_id == deluser_id }
   end
 
   ##
@@ -131,14 +131,14 @@ class Usergroup
   # retur list of all users
   #
   def list_user(param = '1110')
-    @group_users.each {|item| puts item.info(param)}
+    @group_users.each { |item| puts item.info(param) }
   end
 
   ##
   # retur user with user_id
   #
   def user_by_id(user_id)
-    @group_users.find {|item| item.user_id == user_id}
+    @group_users.find { |item| item.user_id == user_id }
   end
 end
 

@@ -1,9 +1,8 @@
 class Fabrica
-
-  def initialize(type = 1)
-    @@teddybear_cnt ||= 0;
-    @@ball_cnt ||= 0;
-    @@cubes_cnt ||= 0;
+  def initialize(_type = 1)
+    @@teddybear_cnt ||= 0
+    @@ball_cnt ||= 0
+    @@cubes_cnt ||= 0
   end
 
   def get_teddybears(n = 1)

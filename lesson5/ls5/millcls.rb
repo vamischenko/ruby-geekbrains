@@ -5,7 +5,7 @@ class Unitprod
     @unit_count += 1
   end
 
-  def initialize()
+  def initialize
     Unitprod.unitcount
   end
 end
@@ -17,11 +17,10 @@ class Product < Unitprod
     super()
     @ptype = ptype
   end
-
 end
 
 class Mill < Product
-  @mill_count = {:bear => 0, :ball => 0, :cube => 0}
+  @mill_count = { bear: 0, ball: 0, cube: 0 }
   class << self
     def millcount(ptype, step)
       @mill_count[ptype.to_sym] = @mill_count[ptype.to_sym] + step
@@ -38,12 +37,11 @@ class Mill < Product
   end
 
   def makeproduct(type, partcount = 1)
-    @mill_products.push(partcount.times {Product.new(type)})
+    @mill_products.push(partcount.times { Product.new(type) })
     Mill.millcount(type, partcount)
   end
 
   def millstat(type = nil)
     Mill.stat(type)
   end
-
 end

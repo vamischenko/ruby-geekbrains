@@ -34,7 +34,7 @@ gets
 # (из предыдущего задания). Реализуйте вывод списка пользователей с использованием класса Group.
 
 uselesuserarray = []
-['Иванов Иван Иванович', 'Петров Петр Петрович', 'Сидоров Сидр Сидрович'].each {|usr| uselesuserarray << User.new(usr)}
+['Иванов Иван Иванович', 'Петров Петр Петрович', 'Сидоров Сидр Сидрович'].each { |usr| uselesuserarray << User.new(usr) }
 uselesusergroup = Group.new('uselesusergroup', uselesuserarray)
 uselesusergroup.list_user('0100')
 puts 'press enter'
@@ -64,18 +64,16 @@ gets
 # Обращение к параметру, который не был задан при создании объекта, должно приводить генерации исключительной ситуации.
 
 class Bl_value
-
   def method_missing(method, value)
     mname = method.to_s.scan(/[^=]/).join
-    self.class.send(:define_method, "#{mname}".to_sym) {instance_variable_set("@#{mname}", value)}
-    self.class.send(:define_method, "#{mname}".to_sym) {instance_variable_get("@#{mname}")}
-    self.class.send(:define_method, "#{mname}=".to_sym) {|new_value| instance_variable_set("@#{mname}".to_sym, new_value)}
+    self.class.send(:define_method, mname.to_s.to_sym) { instance_variable_set("@#{mname}", value) }
+    self.class.send(:define_method, mname.to_s.to_sym) { instance_variable_get("@#{mname}") }
+    self.class.send(:define_method, "#{mname}=".to_sym) { |new_value| instance_variable_set("@#{mname}".to_sym, new_value) }
   end
 end
 
 class Settings < Bl_value
-
-  def method_missing(method, *args)
+  def method_missing(method, *_args)
     raise "Undefined method #{method} for class Settings"
   end
 
@@ -87,7 +85,7 @@ class Settings < Bl_value
   end
 end
 
-setting = Settings.new {|s| s.hello = 'world'}
+setting = Settings.new { |s| s.hello = 'world' }
 setting.hello = 'world'
 puts setting.hello
 setting.hello = 'useless'

@@ -33,7 +33,7 @@ puts settings.bool
 
 begin
   puts settings.undefined_method
-rescue
+rescue StandardError
   puts 'Undefined method catched!'
 end
 

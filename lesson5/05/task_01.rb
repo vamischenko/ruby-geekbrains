@@ -1,9 +1,8 @@
-#1. Создайте класс Hello, при создании объекта которого конструктору можно было бы передавать
+# 1. Создайте класс Hello, при создании объекта которого конструктору можно было бы передавать
 # параметр Hello.new('world'). При вызове метода say этого объекта hello.say или при выводе
 # объекта методом puts должна выводиться фраза 'Hello world!', где подстрока world задается
 # параметром конструктора.
 class Hello
-
   def initialize(name = 'world')
     @name = name
   end
@@ -17,7 +16,7 @@ class Hello
   end
 end
 
-hello = Hello.new()
+hello = Hello.new
 hello.say
 puts hello
 hello = Hello.new('John')

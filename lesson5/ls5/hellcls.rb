@@ -1,5 +1,4 @@
 class Hello
-
   def initialize(hstr = 'darling')
     @hstr = hstr
   end

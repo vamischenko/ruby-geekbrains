@@ -5,32 +5,26 @@ class User
     @fname = fname
   end
 
-# проще было бы
-#	attr_accessor :name, :sname, :fname
+  # проще было бы
+  #  attr_accessor :name, :sname, :fname
 
   def name(n)
     @name = n
   end
 
-  def name
-    @name
-  end
+  attr_reader :name
 
   def sname(n)
     @sname = n
   end
 
-  def sname
-    @sname
-  end
+  attr_reader :sname
 
   def fname(n)
     @fname = n
   end
 
-  def fname
-    @fname
-  end
+  attr_reader :fname
 
   def full_name
     "#{fname} #{name} #{sname}"
@@ -47,4 +41,4 @@ class User
   def to_arr
     full_name.split
   end
-end	
+end
