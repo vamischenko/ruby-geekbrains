@@ -7,8 +7,7 @@ class User
   end
 end
 
-
-users = Array.new(3) do |index|
+users = Array.new(3) do |_index|
   print 'Введите имя '
   s = gets.encode('UTF-8').chomp
   print 'Введите оценку '

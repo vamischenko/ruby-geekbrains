@@ -1,27 +1,27 @@
 def colors(colNumber)
   if colNumber == 1
-    puts "red";
+    puts 'red'
   elsif colNumber == 2
-    puts "orange";
+    puts 'orange'
   elsif colNumber == 3
-    puts "yellow";
+    puts 'yellow'
   elsif colNumber == 4
-    puts "green";
+    puts 'green'
   elsif colNumber == 5
-    puts "blue";
+    puts 'blue'
   elsif colNumber == 6
-    puts "white-blue";
+    puts 'white-blue'
   elsif colNumber == 7
-    puts "purple";
+    puts 'purple'
   else
-    puts nil;
+    puts nil
   end
 end
 
-#first and third task (1 и 3 задание)
+# first and third task (1 и 3 задание)
 colors(ARGV[0].to_i)
 
-#second (второе)
+# second (второе)
 randomNumber = rand(10)
 puts "Случайное число - #{randomNumber}"
 colors(randomNumber)

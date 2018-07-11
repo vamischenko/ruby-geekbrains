@@ -1,13 +1,13 @@
 arr = %w[cat dog tiger]
 
 puts 'Task1'
-puts arr.select {|item| item.include? 't'}.to_s
+puts arr.select { |item| item.include? 't' }.to_s
 
 puts "\nTask2"
 puts arr
-         .map {|item| item.upcase}
-         .map {|item| item.downcase}
-         .to_s
+  .map(&:upcase)
+  .map(&:downcase)
+  .to_s
 
 class User
   attr_accessor :name
@@ -29,7 +29,7 @@ loop do
   name, raw_grade = gets.chomp.split(/\s+/)
   grade = raw_grade.to_i
 
-  unless (1..5).include? grade
+  unless (1..5).cover? grade
     puts 'Wrong grade, try again'
     next
   end
@@ -40,20 +40,19 @@ loop do
 end
 
 puts "\nTask4"
-puts %i(first second third)
-         .each_with_index
-         .inject({}) {|acc, (item, index)| acc.merge({item => index + 1})}
+puts %i[first second third]
+  .each_with_index
+  .inject({}) { |acc, (item, index)| acc.merge(item => index + 1) }
 
-
-def my_map(src_arr = [], &block)
+def my_map(src_arr = [])
   dest_arr = []
 
   src_arr.each do |item|
-    dest_arr << (block.call item)
+    dest_arr << (yield item)
   end
 
   dest_arr
 end
 
 puts "\nTask5"
-puts my_map((1..5).to_a) {|item| item ** 2}.to_s
+puts my_map((1..5).to_a) { |item| item**2 }.to_s

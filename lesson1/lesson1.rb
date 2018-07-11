@@ -8,11 +8,11 @@ module Internet
     end
 
     def fio
-      return @firstName, @secondName, @lastName
+      [@firstName, @secondName, @lastName]
     end
 
     def get_prof
-      return @profession
+      @profession
     end
   end
   class Computer
