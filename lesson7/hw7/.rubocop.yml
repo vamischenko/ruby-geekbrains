@@ -1,0 +1,8 @@
+Metrics/LineLength:
+  Enabled: false
+  
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Security/Open:
+  Enabled: false
