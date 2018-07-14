@@ -1,0 +1,8 @@
+task default: :countrb
+
+namespace :file do
+desc "Это задача считает количество файлов с расширением .rb в текущей директории и всех ее поддиректориях"
+    task :countrb, [:userdir] do |_t, arg|
+        puts "В директории #{arg[:userdir].nil? ? Dir.pwd : arg[:userdir]} и всех ее поддиректориях #{Dir[(File.join(arg[:userdir].nil? ? Dir.pwd : arg[:userdir],'**','*.rb'))].size} файлов с расширением .rb"
+    end
+end

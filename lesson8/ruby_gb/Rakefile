@@ -1,0 +1,7 @@
+task default: :count_rb
+
+desc "Считает все файлы с расширением .rb в текущей директории "
+
+task :count_rb do
+	puts Dir.glob("./**/*.rb").length
+end
