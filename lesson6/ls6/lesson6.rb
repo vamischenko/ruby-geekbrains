@@ -13,9 +13,9 @@ puts
 require_relative 'fuflcls.rb'
 millenniumfalcon = Dopobj.new
 r2d2 = Droid.new('R2D2')
-r2d2.setupdroid('astro',:droidlang)
+r2d2.setupdroid('astro', :droidlang)
 r2d2.communicate(millenniumfalcon)
-#r2d2.translatehuman('1000101000111110110') # а вот так сделать не даст
+# r2d2.translatehuman('1000101000111110110') # а вот так сделать не даст
 
 # 3. *Пусть имеется фабрика, которая выпускает детские игрушки: плюшевый медвежонок, мяч, кубики.
 # Создайте класс Factory, который имеет метод Factory.build, возвращающий объект классов BearCub, Ball или Cube, соответствующих одной из игрушек.
@@ -27,7 +27,7 @@ puts megafactory.build(:cube).class
 puts megafactory.build(:bear).class
 puts megafactory.build(:ball).class
 puts
-#puts megafactory.build(:toy).class # а вот так сделать не даст
+# puts megafactory.build(:toy).class # а вот так сделать не даст
 
 # 4. *Создайте класс судна. Унаследуйте от него два типа судов: с возможностью плавать под водой и над водой. С использованием полученных классов создайте:
 # атомную подводную лодку (ракеты, торпеды);
@@ -39,28 +39,35 @@ puts
 
 require_relative 'vessel.rb'
 supercargo = Abovewater.new('контейнеровоз', ['cargo'], 10)
-supercargo.hold, supercargo.crane = false, true
-puts supercargo.inspect.encode("cp866")
+supercargo.hold = false
+supercargo.crane = true
+puts supercargo.inspect.encode('cp866')
 
 zernocargo = Abovewater.new('сухогруз ', ['cargo'], 40)
-zernocargo.hold, zernocargo.crane = true, true
+zernocargo.hold = true
+zernocargo.crane = true
 puts zernocargo.inspect
 
 tankercargo = Abovewater.new('нефтяной танкер', ['cargo'], 50)
-tankercargo.hold, tankercargo.crane = true, false
+tankercargo.hold = true
+tankercargo.crane = false
 puts tankercargo.inspect
 
-atomander = Underwater.new('подводная лодка', ['military'], 10000)
-atomander.rocket, atomander.torpedo = true, false
+atomander = Underwater.new('подводная лодка', ['military'], 10_000)
+atomander.rocket = true
+atomander.torpedo = false
 puts atomander.inspect
 
 rocketbot = Abovewater.new('ракетный крейсер', ['military'], 45)
-rocketbot.rocket, rocketbot.torpedo = true, false
+rocketbot.rocket = true
+rocketbot.torpedo = false
 puts rocketbot.inspect
 
-militarycargo = Abovewater.new('военный транспорт', ['cargo','military'], 150)
-militarycargo.hold, militarycargo.crane = true, true
-militarycargo.rocket, militarycargo.torpedo = true, false
+militarycargo = Abovewater.new('военный транспорт', %w[cargo military], 150)
+militarycargo.hold = true
+militarycargo.crane = true
+militarycargo.rocket = true
+militarycargo.torpedo = false
 puts militarycargo.inspect
 
 # 5. *Реализуйте модуль Fivable, включение которого в класс будет разрешать создание только пяти объектов этого класса.

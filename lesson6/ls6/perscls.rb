@@ -1,8 +1,10 @@
 class Person
-  attr_accessor :name, :sname, :mname 
+  attr_accessor :name, :sname, :mname
   def initialize(fio)
     personfio = fio.to_s.split
-    @name, @sname, @mname= personfio[0], personfio[1], personfio[2] 
+    @name = personfio[0]
+    @sname = personfio[1]
+    @mname = personfio[2]
   end
   private_class_method :new
 end
@@ -12,9 +14,7 @@ class User < Person
 end
 
 class Moderator < User
-  
 end
 
 class Admin < Moderator
-  
 end

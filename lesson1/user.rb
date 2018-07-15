@@ -1,4 +1,4 @@
-#class for user
+# class for user
 class User
   def init(first, second, last, prof)
     @firstName = first

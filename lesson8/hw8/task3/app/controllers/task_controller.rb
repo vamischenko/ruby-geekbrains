@@ -1,7 +1,5 @@
 class TaskController < ApplicationController
-  def main
-  end
+  def main; end
 
-  def contacts
-  end
+  def contacts; end
 end

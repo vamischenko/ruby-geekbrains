@@ -1,4 +1,3 @@
-
 # task №1
 massiv = %w[cat dog tiger]
 for word in massiv
@@ -30,9 +29,7 @@ users = Array.new(3) do |_index|
   s = gets.encode('UTF-8').chomp
   print 'Введите оценку '
 
-  while (gets.to_i >= 1) && (gets.to_i <= 5)
-    v = gets.to_i
-  end
+  v = gets.to_i while (gets.to_i >= 1) && (gets.to_i <= 5)
   User.new(s, v)
 end
 
